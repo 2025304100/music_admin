@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhou.music_admin.dao.titleBean.TitleMapper">
+  <resultMap id="BaseResultMap" type="com.zhou.music_admin.entity.titleBean.Title">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  <select id="getAuthorization" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT role,U.url FROM (SELECT role,url FROM urlFilter where urlFilter.user=#{username}) M RIGHT JOIN url_title U ON U.id=M.url
+  </select>
+
+</mapper>

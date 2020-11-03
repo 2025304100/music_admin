@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhou.music_admin.dao.adminUserBean.AdminUserMapper">
+  <resultMap id="BaseResultMap" type="com.zhou.music_admin.entity.adminUserBean.AdminUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="pas" jdbcType="VARCHAR" property="pas" />
+    <result column="role_type" jdbcType="INTEGER" property="roleType" />
+  </resultMap>
+  <resultMap id="adminRoleMap" type="com.zhou.music_admin.entity.adminUserBean.AdminRoleUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="pas" jdbcType="VARCHAR" property="password" />
+    <result column="role_type" jdbcType="VARCHAR" property="roleType" />
+    <result column="comment" jdbcType="VARCHAR" property="comment"/>
+  </resultMap>
+  <select id="getAdminView" resultMap="adminRoleMap"  parameterType="java.lang.String">
+    select M.username,M.pas,A.role_type,A.comment from
+    (
+    select username,pas,`role_type` from admin_user where username=#{username}
+    ) M
+    INNER  JOIN user_role A ON M.role_type=A.id
+
+   </select>
+</mapper>

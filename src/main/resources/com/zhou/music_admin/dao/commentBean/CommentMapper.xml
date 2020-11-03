@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhou.music_admin.dao.commentBean.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.zhou.music_admin.entity.commentBean.Comment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="music_id" jdbcType="INTEGER" property="musicId" />
+    <result column="profileint" jdbcType="VARCHAR" property="profileint" />
+    <result column="After_review" jdbcType="VARCHAR" property="afterReview" />
+    <result column="pror_name" jdbcType="VARCHAR" property="prorName" />
+    <result column="after_name" jdbcType="VARCHAR" property="afterName" />
+    <result column="profile_text" jdbcType="VARCHAR" property="profileText" />
+    <result column="click" jdbcType="INTEGER" property="click" />
+    <result column="publish_data" jdbcType="DATE" property="publishData" />
+    <result column="file_img" jdbcType="LONGVARCHAR" property="fileImg" />
+  </resultMap>
+</mapper>

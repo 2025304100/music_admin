@@ -1,0 +1,88 @@
+# 所有环境公用配置属性
+spring:
+  datasource:
+    tomcat:
+      #初始化连接数量
+      initial-size: 8
+      min-idle: 2
+      max-active: 8
+      #空闲多少会被回收
+      time-between-eviction-runs-millis: 3000
+      #是否开启后关闭
+      remove-abandoned: true
+      min-evictable-idle-time-millis: 3000
+      remove-abandoned-timeout: 120
+    initialization-mode: always
+  application:
+    name: music
+  cloud:
+    nacos:
+      discovery:
+        metadata:
+          name: zhou
+          vasion: 1.0
+        namespace: 8164ac1f-9263-4bdc-99be-5d84be729842
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+  mail:
+    host: smtp.qq.com
+    username: 2025304100@qq.com
+    password: uazznrsvlrvkfddc
+    default-encoding: UTF-8
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+shiro:
+  web:
+    enabled: true
+
+#生产环境
+---
+spring:
+  profiles: dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://39.97.180.64:3306/music_demo?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 199851025
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 203.195.217.161:8848
+music:
+  hostPath: http://127.0.0.1:8010
+  host: 127.0.0.1:8010
+  file:
+    home: D://music
+    path:
+      user_img: user_img
+      music: music
+      music_img: music_img
+
+#连接符号
+---
+#开发环境   专用属性
+spring:
+  profiles: prod
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/music_demo?useUnicode=true&characterEncoding=UTF-8
+    username: zhou
+    password: W^ak~Qp3Gl
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 203.195.217.161:8848
+music:
+  hostPath: http://203.195.217.161:8010
+  host: 203.195.217.161:8010
+  file:
+    home: /music
+    path:
+      user_img: user_file
+      music: file
+      music_img: file

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhou.music_admin.dao.musicBean.MusicMapper">
+  <resultMap id="BaseResultMap" type="com.zhou.music_admin.entity.musicBean.Music">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="file_music" jdbcType="VARCHAR" property="fileMusic" />
+    <result column="file_img" jdbcType="VARCHAR" property="fileImg" />
+    <result column="music_name" jdbcType="VARCHAR" property="musicName" />
+    <result column="music_author_name" jdbcType="VARCHAR" property="musicAuthorName" />
+    <result column="file_music_author_name" jdbcType="VARCHAR" property="fileMusicAuthorName" />
+    <result column="music_type" jdbcType="INTEGER" property="musicType" />
+    <result column="music_data" jdbcType="DATE" property="musicData" />
+    <result column="music_cpy_music_data" jdbcType="VARCHAR" property="musicCpyMusicData" />
+    <result column="music_ts" jdbcType="INTEGER" property="musicTs" />
+    <result column="file_lyirc" jdbcType="VARCHAR" property="fileLyirc" />
+    <result column="music_index" jdbcType="INTEGER" property="musicIndex" />
+    <result column="context" jdbcType="INTEGER" property="context" />
+    <result column="is_plsy" jdbcType="INTEGER" property="isPlsy" />
+  </resultMap>
+  <select id="getLinkMusic" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * FROM  music_demo.music
+    WHERE CONCAT(`music_name`,`music_author_name`)
+    LIKE '%#{link}%' LIMIT #{prefix},#{suffix}
+  </select>
+  <select id="getIndexMusic" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * FROM  music_demo.music
+    LIMIT #{prefix},#{suffix}
+  </select>
+</mapper>

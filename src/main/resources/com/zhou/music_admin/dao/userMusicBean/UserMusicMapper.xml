@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhou.music_admin.dao.userMusicBean.UserMusicMapper">
+  <resultMap id="BaseResultMap" type="com.zhou.music_admin.entity.userMusicBean.UserMusic">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="username" jdbcType="VARCHAR" property="username" />
+    <id column="music_id" jdbcType="INTEGER" property="musicId" />
+    <result column="is_buy" jdbcType="INTEGER" property="isBuy" />
+    <result column="data_time" jdbcType="DATE" property="dataTime" />
+  </resultMap>
+  <select id="getSelUserMusic" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM music_demo.user_music WHERE username=#{username}
+  </select>
+</mapper>
