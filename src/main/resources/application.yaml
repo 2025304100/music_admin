@@ -52,7 +52,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 203.195.217.161:8848
+        server-addr: 203.195.217.161:8848 e
 music:
   hostPath: http://127.0.0.1:8010
   host: 127.0.0.1:8010
