@@ -1,5 +1,16 @@
 # 所有环境公用配置属性
 spring:
+#表示redis设置
+  redis:
+    host: 203.195.217.161
+    port: 6379
+    password: #aa199851025
+    jedis:
+      pool:
+        max-active: 20
+        max-idle: 8
+        max-wait: -1
+        min-idle: 1
   datasource:
     tomcat:
       #初始化连接数量
@@ -80,6 +91,30 @@ spring:
 music:
   hostPath: http://203.195.217.161:8010
   host: 203.195.217.161:8010
+  file:
+    home: /music
+    path:
+      user_img: user_file
+      music: file
+      music_img: file
+
+#连接符号
+---
+#开发环境   专用属性
+spring:
+  profiles: test
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/music_demo?useUnicode=true&characterEncoding=UTF-8
+    username: zhou
+    password: W^ak~Qp3Gl
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 203.195.217.161:8848
+music:
+  hostPath: http://2.56.242.6:8010
+  host: 2.56.242.6:8010
   file:
     home: /music
     path:
