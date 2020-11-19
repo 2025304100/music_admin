@@ -2,6 +2,7 @@ package com.zhou.music_admin.entity.musicBean;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.PageRequest;
 
 
 import java.util.Date;
@@ -94,7 +95,14 @@ public class Music {
     @Column(name = "music_index")
     @NotNull(message = "音乐级不能为空")
     private Integer musicIndex;
-
+    /**
+     * 音乐级别名
+     */
+    private  String lyirc_name;
+    /**
+     * 音乐组名
+     */
+    private String  musictypeZh;
     /**
      * 点击量
      */

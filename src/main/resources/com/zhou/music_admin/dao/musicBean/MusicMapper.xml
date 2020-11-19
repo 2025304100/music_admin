@@ -16,17 +16,25 @@
     <result column="music_cpy_music_data" jdbcType="VARCHAR" property="musicCpyMusicData" />
     <result column="music_ts" jdbcType="INTEGER" property="musicTs" />
     <result column="file_lyirc" jdbcType="VARCHAR" property="fileLyirc" />
+    <result column=" musictypeZh" jdbcType="VARCHAR" property=" musictypeZh" />
+    <result column="lyirc_name" jdbcType="VARCHAR" property="lyirc_name" />
     <result column="music_index" jdbcType="INTEGER" property="musicIndex" />
     <result column="context" jdbcType="INTEGER" property="context" />
     <result column="is_plsy" jdbcType="INTEGER" property="isPlsy" />
   </resultMap>
   <select id="getLinkMusic" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     SELECT * FROM  music_demo.music
+    INNER JOIN ( SELECT I.ID K, lyirc_name, M.ID F, musictypeZh FROM lyirc I, mtype M ) S ON S.K=M.id
     WHERE CONCAT(`music_name`,`music_author_name`)
     LIKE '%#{link}%' LIMIT #{prefix},#{suffix}
   </select>
   <select id="getIndexMusic" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    SELECT * FROM  music_demo.music
-    LIMIT #{prefix},#{suffix}
+SELECT
+	*
+FROM
+	music_demo.music M
+	INNER JOIN ( SELECT I.ID K, lyirc_name, M.ID F, musictypeZh FROM lyirc I, mtype M ) S ON S.K = M.music_index
+	AND S.F = music_type
+	LIMIT #{prefix},#{suffix}
   </select>
 </mapper>

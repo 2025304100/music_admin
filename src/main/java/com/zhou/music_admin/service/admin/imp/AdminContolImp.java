@@ -13,8 +13,9 @@ public class AdminContolImp extends ServletMapper implements AdminControl {
     @Override
     public List<AdminUser> getAllAdmin() {
         List<AdminUser> adminUsers = adminUserMapper.selectAll();
-        if (ObjectUtils.isEmpty(adminUsers))
+        if (ObjectUtils.isEmpty(adminUsers)) {
             adminUsers=new ArrayList<>();
+        }
         return adminUsers;
     }
 
@@ -31,8 +32,9 @@ public class AdminContolImp extends ServletMapper implements AdminControl {
         Example example = new Example(AdminUser.class);
         example.createCriteria().andEqualTo("roleType",identity);
         List<AdminUser> adminUsers = adminUserMapper.selectByExample(example);
-        if (ObjectUtils.isEmpty(adminUsers))
-        adminUsers=new ArrayList<>();
+        if (ObjectUtils.isEmpty(adminUsers)) {
+            adminUsers=new ArrayList<>();
+        }
         return adminUsers;
     }
 

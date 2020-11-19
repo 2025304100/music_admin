@@ -40,10 +40,9 @@ public class MusicView {
     private String fileMusicAuthorName;
 
     /**
-     * 音乐组
+     * 音乐组名
      */
-
-    private Integer musicType;
+    private String  musictypeZh;
 
     /**
      * 音乐发布时间
@@ -70,10 +69,9 @@ public class MusicView {
     private String fileLyirc;
 
     /**
-     * 下载等级0-普通  1-vip 3-专卖
+     * 音乐级别名
      */
-
-    private String musicIndex;
+    private  String lyirc_name;
 
     /**
      * 点击量
